@@ -6,7 +6,7 @@ import { AccountComponent } from './account/account.component';
 @Component({
   selector: 'app-root', // HTML tag for adding this component to a page
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, AccountComponent, RouterLink],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html', // HTML to be displayed in component
   styleUrl: './app.component.css' // CSS to style component
 })
