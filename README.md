@@ -1,59 +1,36 @@
-# Week4tut
+# Week4 Tutorial - Angular Project Setup Guide
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+## Description
+This guide covers essential commands used in setting up and managing an Angular project using Node.js, npm, and Git.
 
-## Development server
+## 📦 Node & Angular Commands
 
-To start a local development server, run:
+- `node -v` — Check installed Node.js version  
+- `npm install -g @angular/cli` — Install Angular CLI globally  
+- `ng new week4tut` — Create a new Angular project  
+- `ng serve` — Run the app locally  
+- `ng generate component component-name` — Generate a new component  
+- `ng build` — Build the project for production  
 
-```bash
-ng serve
-```
+## 📁 NPM Commands (Module Management)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- `npm install` — Install dependencies listed in `package.json`  
+- `npm install package-name` — Install a specific package  
+- `npm install package-name --save-dev` — Install as a dev dependency  
+- `npm uninstall package-name` — Remove a package  
+- `npm update` — Update all packages  
+- `npm list` — List installed packages  
 
-## Code scaffolding
+## 🌱 Git Commands
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `git init` — Initialize a new Git repository  
+- `git clone <repo-url>` — Clone an existing repository  
+- `git status` — Check changes and file states  
+- `git add .` — Stage all changes  
+- `git commit -m "your message"` — Commit changes with a message  
+- `git push` — Push commits to the remote repo  
+- `git pull` — Pull the latest changes  
+- `git branch` — List branches  
+- `git checkout -b branch-name` — Create and switch to a new branch  
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
