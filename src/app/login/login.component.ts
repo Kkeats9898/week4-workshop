@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,26 +14,29 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
-  errorMessage: string = '' 
+  errorMessage: string = '';
 
-  users = [
-    { email: 'user1@example.com', password: '123'},
-    { email: 'user2@example.com', password: 'abc'},
-    { email: 'user3@example.com', password: '321'},
-  ];
-
-  constructor(private router:Router) {}
+  constructor(private router:Router, private http: HttpClient) {}
 
   login() {
-    const validUser = this.users.find(
-      user => user.email === this.email && user.password === this.password
-    );
+    const validUser = {
+      email: this.email,
+      password: this.password
+    };
 
-    if (validUser) {
-      this.router.navigate(['/account']); // Redirect on success 
-    } else {
-      this.errorMessage = 'Email or password not correct, try again.'
+    this.http.post<any>('http://localhost:3000/api/auth', validUser).subscribe({
+    next: (response) => {
+      if (response.user.valid) {
+        console.log('Login successful', response);
+        this.router.navigate(['/account']);
+      } else {
+        this.errorMessage = response.message || 'Email or password not correct.';
+      }
+    },
+    error: (error) => {
+      console.error('Login failed', error);
+      this.errorMessage = error.error?.message || 'Server error occurred.';
     }
+  });
   }
-
 }
