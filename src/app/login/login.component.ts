@@ -28,6 +28,7 @@ export class LoginComponent {
     next: (response) => {
       if (response.user.valid) {
         console.log('Login successful', response);
+        localStorage.setItem("user", JSON.stringify(response.user)) // Store user info (password not included)
         this.router.navigate(['/account']);
       } else {
         this.errorMessage = response.message || 'Email or password not correct.';

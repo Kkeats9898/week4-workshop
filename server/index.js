@@ -24,7 +24,7 @@ const users = [ //Dummy data
 
 // POST /api/auth endpoint
 app.post('/api/auth', (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body; // loos for email and password matches in req body 
   const user = users.find(u => u.email === email && u.password === password && u.valid
   );
 

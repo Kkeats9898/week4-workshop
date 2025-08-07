@@ -1,5 +1,5 @@
 class User {
-  constructor(username, birthdate, age, email, password, valid) {
+  constructor(username = "", birthdate = 0, age = 0, email = "", password = "", valid = false) {
     this.username = username;
     this.birthdate = birthdate;
     this.age = age;
@@ -10,3 +10,4 @@ class User {
 }
 
 module.exports = User;
+
