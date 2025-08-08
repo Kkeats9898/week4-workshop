@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +12,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private authService = inject(AuthService)
+  private router = inject(Router)
+
   email: string = '';
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router:Router, private http: HttpClient) {}
-
   login() {
-    const validUser = {
-      email: this.email,
-      password: this.password
-    };
-
-    this.http.post<any>('http://localhost:3000/api/auth', validUser).subscribe({
+    this.authService.login(this.email, this.password).subscribe({ // Call auth service 
     next: (response) => {
       if (response.user.valid) {
         console.log('Login successful', response);
@@ -37,7 +33,8 @@ export class LoginComponent {
     error: (error) => {
       console.error('Login failed', error);
       this.errorMessage = error.error?.message || 'Server error occurred.';
-    }
+    },
+    complete: () => {}
   });
   }
 }
